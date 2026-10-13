@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Workflow Management System</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='login.css') }}"
+    />
+  </head>
+  <body>
+    <div class="login-container">
+      <form
+        class="login-box"
+        id="registerForm"
+        method="POST"
+        action="/register"
+      >
+        <h2>Register</h2>
+        {% with messages = get_flashed_messages() %} {% for message in messages
+        %}
+        <p style="color: red; text-align: center">{{ message }}</p>
+        {% endfor %} {% endwith %}
+        <div class="input-box">
+          <input
+            type="text"
+            id="name"
+            name="username"
+            placeholder="Full Name"
+            required
+          />
+        </div>
+
+        <div class="input-box">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email ID"
+            required
+          />
+        </div>
+
+        <div class="input-box">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Create Password"
+            minlength="8"
+            required
+          />
+        </div>
+
+        <div class="input-box">
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirm_password"
+            placeholder="Confirm Password"
+            minlength="8"
+            required
+          />
+        </div>
+
+        <button type="submit" class="login-btn">Create Account</button>
+
+        <p
+          id="message"
+          role="status"
+          style="text-align: center; margin-top: 15px"
+        ></p>
+
+        <p class="register">
+          Already have an account?
+          <a href="{{ url_for('index') }}">Login</a>
+        </p>
+      </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='register.js') }}"></script>
+  </body>
+</html>
